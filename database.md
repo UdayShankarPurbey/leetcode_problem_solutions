@@ -14,3 +14,10 @@ select name , bonus from Employee
 left join Bonus on Bonus.empId  = Employee.empId       
 where bonus < 1000 or bonus is null
 ```
+
+### 595. Big Countries
+
+```sql 
+select name        , population , area from World
+where area >= 3000000 or population >= 25000000
+```
