@@ -34,3 +34,18 @@ SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count,sum(amount
 group by DATE_FORMAT(trans_date , '%Y-%m') , country 
 order by DATE_FORMAT(trans_date , '%Y-%m') , country , trans_count
 ```
+
+### 196. Delete Duplicate Emails
+
+```sql
+DELETE
+FROM
+person
+WHERE Id NOT IN
+(
+SELECT minid
+FROM
+(SELECT email, min(id) as minid
+FROM Person
+GROUP BY email ) test)
+```
