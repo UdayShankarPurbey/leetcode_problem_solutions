@@ -49,3 +49,11 @@ FROM
 FROM Person
 GROUP BY email ) test)
 ```
+
+### 183. Customers Who Never Order
+
+```sql
+select name as Customers   from Customers 
+left join Orders on Orders.customerId  = Customers.id
+where Orders.id is null  
+```
