@@ -1,0 +1,6 @@
+[submodule "company-problems-1"]
+	path = company-problems-1
+	url = https://github.com/liquidslr/interview-company-wise-problems.git
+[submodule "company-problems-2"]
+	path = company-problems-2
+	url = https://github.com/snehasishroy/leetcode-companywise-interview-questions.git
