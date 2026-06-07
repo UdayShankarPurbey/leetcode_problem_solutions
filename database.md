@@ -57,3 +57,9 @@ select name as Customers   from Customers
 left join Orders on Orders.customerId  = Customers.id
 where Orders.id is null  
 ```
+
+### 584. Find Customer Referee
+
+```sql
+select name  from Customer where referee_id  not in (2) or referee_id is null
+```
