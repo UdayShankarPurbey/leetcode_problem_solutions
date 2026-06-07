@@ -63,3 +63,10 @@ where Orders.id is null
 ```sql
 select name  from Customer where referee_id  not in (2) or referee_id is null
 ```
+
+### 511. Game Play Analysis I
+
+```sql
+select player_id ,min(event_date) as first_login     from Activity
+group by player_id 
+```
