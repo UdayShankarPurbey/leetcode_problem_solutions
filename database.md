@@ -70,3 +70,12 @@ select name  from Customer where referee_id  not in (2) or referee_id is null
 select player_id ,min(event_date) as first_login     from Activity
 group by player_id 
 ```
+
+### 586.p
+
+```sql
+select customer_number  from Orders
+group by customer_number
+    order by count(*) desc
+    limit 1
+    ```
