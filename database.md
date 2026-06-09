@@ -79,3 +79,11 @@ group by customer_number
     order by count(*) desc
     limit 1
     ```
+
+### Q3. Not Boring Movies
+
+```sql
+select * from Cinema where (id %2 != 0) 
+and description != "boring"
+order by rating desc
+```
