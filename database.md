@@ -87,3 +87,13 @@ select * from Cinema where (id %2 != 0)
 and description != "boring"
 order by rating desc
 ```
+
+### 619. Biggest Single Number
+
+```sql
+select max(num) as num from (
+    select num from MyNumbers
+group by num 
+having count(num) = 1
+) a
+```
