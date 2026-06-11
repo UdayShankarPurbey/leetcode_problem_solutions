@@ -71,7 +71,7 @@ select player_id ,min(event_date) as first_login     from Activity
 group by player_id 
 ```
 
-### 586.p
+### 586. Customer Placing the Largest Number of Orders
 
 ```sql
 select customer_number  from Orders
@@ -96,4 +96,14 @@ select max(num) as num from (
 group by num 
 having count(num) = 1
 ) a
+```
+
+### 608. Tree Node
+
+```sql
+select id ,
+case when p_id is null then  'Root'
+when  id  not in (select distinct t.p_id from tree t where t.p_id is not null) then 'Leaf'
+else 'Inner' end as type   
+from tree
 ```
