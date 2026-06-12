@@ -107,3 +107,16 @@ when  id  not in (select distinct t.p_id from tree t where t.p_id is not null) t
 else 'Inner' end as type   
 from tree
 ```
+
+### 3475. DNA Pattern Recognition
+
+```sql
+select 
+*,
+case when SUBSTR(dna_sequence, 1, 3) = 'ATG' then 1 else 0 end as  has_start,
+case when FIND_IN_SET(REVERSE(SUBSTR(REVERSE(dna_sequence), 1, 3) ), 'TAA,TAG,TGA') = 0  then 0 else 1 end as  has_stop,
+case when dna_sequence like '%atat%' then 1 else 0 end as  has_atat,
+case when dna_sequence like '%ggg%' then 1 else 0 end as  has_ggg
+from samples
+order by sample_id asc;
+```
