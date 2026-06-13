@@ -120,3 +120,11 @@ case when dna_sequence like '%ggg%' then 1 else 0 end as  has_ggg
 from samples
 order by sample_id asc;
 ```
+
+### 596. Classes With at Least 5 Students
+
+```sql
+select class from Courses
+group by class
+having count(*) >= 5
+```
