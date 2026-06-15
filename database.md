@@ -137,3 +137,12 @@ select actor_id , director_id from ActorDirector
 group by director_id , actor_id
 having count(actor_id) >= 3
 ```
+
+### 1587. Bank Account Summary II
+
+```sql
+SELECT u.name, SUM(amount) as balance
+FROM Transactions t
+LEFT JOIN Users u ON u.account=t.account GROUP BY t.account
+HAVING SUM(amount)>10000
+```
