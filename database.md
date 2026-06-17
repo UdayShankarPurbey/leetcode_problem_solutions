@@ -154,3 +154,23 @@ select activity_date as day , count(distinct user_id) as active_users from Activ
 WHERE activity_date BETWEEN '2019-06-28' AND '2019-07-27'
 group by activity_date 
 ```
+
+### 3497. Analyze Subscription Conversion 
+
+```sql
+select t1.user_id , trial_avg_duration , paid_avg_duration from (
+select user_id ,ROUND(SUM(activity_duration) * 1.0 / COUNT(activity_duration), 2) as trial_avg_duration 
+ from UserActivity
+where user_id in (
+select distinct user_id from UserActivity where activity_type  = 'paid'
+) and activity_type = 'free_trial'
+group by user_id ) t1 
+left join  (
+select user_id ,ROUND(SUM(activity_duration) * 1.0 / COUNT(activity_duration), 2) as paid_avg_duration
+ from UserActivity
+where user_id in (
+select distinct user_id from UserActivity where activity_type  = 'paid'
+) and activity_type = 'paid'
+group by user_id 
+) t2 on t2.user_id = t1.user_id
+```
