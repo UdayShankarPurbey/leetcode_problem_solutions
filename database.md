@@ -174,3 +174,31 @@ select distinct user_id from UserActivity where activity_type  = 'paid'
 group by user_id 
 ) t2 on t2.user_id = t1.user_id
 ```
+
+### 1907. Count Salary Categories
+
+```sql
+
+select ti.category as category , 
+COALESCE(tf.accounts_count, ti.val) AS accounts_count
+from (
+SELECT 'Low Salary' AS category, 0 AS val
+UNION ALL
+SELECT 'Average Salary', 0
+UNION ALL
+SELECT 'High Salary', 0) as ti
+left join  (
+select category , 
+count(account_id) as accounts_count from 
+(
+SELECT account_id,
+case 
+when income < 20000 then 'Low Salary'
+when income between 20000 and 50000 then 'Average Salary'
+when income > 50000 then 'High Salary'
+end as category
+FROM Accounts
+) t1
+group by category
+) tf on tf.category = ti.category
+```
