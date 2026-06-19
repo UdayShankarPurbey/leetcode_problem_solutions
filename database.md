@@ -202,3 +202,13 @@ FROM Accounts
 group by category
 ) tf on tf.category = ti.category
 ```
+
+### 184. Department Highest Salary
+
+```sql
+select Department.name as Department , Employee.name as Employee , salary as Salary  from Department 
+left  join Employee on Employee.departmentId = Department.id
+left join (select departmentId , max(salary) as max_salary from Employee 
+group by departmentId) as tt on tt.departmentId = Employee.departmentId
+where salary = max_salary
+```
