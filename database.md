@@ -212,3 +212,19 @@ left join (select departmentId , max(salary) as max_salary from Employee
 group by departmentId) as tt on tt.departmentId = Employee.departmentId
 where salary = max_salary
 ```
+
+### 602. Friend Requests II: Who Has the Most Friends
+
+```sql
+SELECT T1.I as id , COUNT(T1.I) as num FROM (SELECT requester_id AS I FROM RequestAccepted
+UNION ALL 
+SELECT accepter_id AS I FROM RequestAccepted) T1
+GROUP BY T1.I
+Having  COUNT(T1.I) = (
+select max(tq.count_i) from (
+SELECT T1.I , COUNT(T1.I) as COUNT_i FROM (SELECT requester_id AS I FROM RequestAccepted
+UNION ALL 
+SELECT accepter_id AS I FROM RequestAccepted) T1
+GROUP BY T1.I) as tq
+)
+```
