@@ -237,14 +237,11 @@ group by transaction_date
 order by transaction_date
 ```
 
+### 607. Sales Person
+
 ```sql
-SELECT name
-FROM SalesPerson
-WHERE sales_id NOT IN (
-    SELECT o.sales_id
-    FROM Orders o
-    JOIN Company c
-        ON o.com_id = c.com_id
-    WHERE c.name = 'RED'
-);
+select name from SalesPerson 
+where sales_id not in (select distinct sales_id from Company
+left join Orders on Orders.com_id = Company.com_id
+where Company.name = 'red' and sales_id is not null)
 ```
