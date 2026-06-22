@@ -245,3 +245,13 @@ where sales_id not in (select distinct sales_id from Company
 left join Orders on Orders.com_id = Company.com_id
 where Company.name = 'red' and sales_id is not null)
 ```
+
+### 570. Managers with at Least 5 Direct Reports
+
+```sql
+select name from Employee where id  in (
+select managerId  from Employee 
+group by managerId
+Having count(id) >= 5
+);
+```
