@@ -255,3 +255,18 @@ group by managerId
 Having count(id) >= 5
 );
 ```
+
+### 3808. Find Emotionally Consistent Users
+
+```sql
+select t1.user_id, reaction as dominant_reaction, round(r * 1.0 /t_r , 2) as reaction_ratio from (
+select user_id , reaction , count(*) as r  from reactions
+group by user_id , reaction
+) t1 
+left join  (
+select user_id  , count(*) as t_r  from reactions
+group by user_id ) t2  on 
+t2.user_id = t1.user_id
+where t_r >= 5 and ( r * 1.0 /t_r ) >= 0.6
+order by reaction_ratio desc , user_id asc
+```
