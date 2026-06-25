@@ -281,3 +281,13 @@ where year(Orders.order_date) = '2019'
 group by buyer_id
 ) t1 on t1.buyer_id = Users.user_id
 ```
+
+### 3657. Find Loyal Customers
+
+```sql
+select customer_id   from  customer_transactions
+group by customer_id
+having count(case when transaction_type = 'purchase' then 1 end ) >= 3 
+and DATEDIFF(DAY ,MIN(transaction_date), Max(transaction_date)) >= 30 
+and ((count(case when transaction_type = 'refund' then 1 end ) * 1.0) /count(transaction_type) ) < 0.2
+```
