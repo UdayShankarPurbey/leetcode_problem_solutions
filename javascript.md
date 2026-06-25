@@ -1,4 +1,5 @@
 ### 1189. Maximum Number of Balloons
+
 ```js
 /**
  * @param {string} text
@@ -58,4 +59,32 @@ function distinctWordCount(word) {
     return first_val !== null && second_val !== null ? [first_val,second_val] : []
     
 };
+```
+
+### 3. Longest Substring Without Repeating Characters
+
+```js
+ var lengthOfLongestSubstring = function(s) {
+    let maxLength = 0;
+    const stringLength = s.length;
+    const strData = {}
+    let newStr = null;
+    for(let i = 0 ; i< stringLength ; i ++) {
+        const letter = s[i];
+
+        if(strData[letter] == undefined) {
+            strData[letter] = i;
+        } else {
+            newStr = newStr.slice(newStr.indexOf(letter) + 1)
+        }
+        
+        newStr = newStr == null ? letter : newStr + letter
+        maxLength = maxLength < newStr.length ? newStr.length : maxLength
+
+        
+    }
+
+    return maxLength;
+
+}
 ```
