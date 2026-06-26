@@ -291,3 +291,14 @@ having count(case when transaction_type = 'purchase' then 1 end ) >= 3
 and DATEDIFF(DAY ,MIN(transaction_date), Max(transaction_date)) >= 30 
 and ((count(case when transaction_type = 'refund' then 1 end ) * 1.0) /count(transaction_type) ) < 0.2
 ```
+
+### 1393. Capital Gain/Loss
+
+```sql
+select stock_name ,
+sum (case when operation = 'Sell' then price end ) -
+sum(case when operation = 'Buy' then price end) 
+as capital_gain_loss 
+from Stocks
+group by stock_name
+```
