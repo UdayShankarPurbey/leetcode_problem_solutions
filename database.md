@@ -303,18 +303,34 @@ from Stocks
 group by stock_name
 ```
 
+### 197. Rising Temperature
 
-
-
-``sql
+```sql
 SELECT w1.id
 FROM Weather w1
 JOIN Weather w2
 ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
-WHERE w1.temperature > w2.temperature;
-
+WHERE w1.temperature > w2.temperature
 ```
 
+### 1068. Product Sales Analysis I
+
+```sql
+select product_name , year ,price from Sales left join Product 
+on Product.product_id = Sales.product_id
 ```
-select product_name , year ,price from Sales left join Product  on Product.product_id = Sales.product_id
+
+### 626. Exchange Seats
+
+```sql
+SELECT  S.id , S1.student FROM (
+SELECT *, 
+CASE 
+WHEN (SELECT MAX(ID) FROM Seat) %2 != 0 AND (SELECT MAX(ID) FROM Seat) = ID THEN ID 
+WHEN  ID%2 =0 THEN ID - 1 
+ELSE ID + 1  END AS TEST
+FROM SEAT
+) S
+LEFT JOIN Seat S1 ON S.TEST = S1.id
+ORDER BY S.ID
 ```
