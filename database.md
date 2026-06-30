@@ -334,3 +334,10 @@ FROM SEAT
 LEFT JOIN Seat S1 ON S.TEST = S1.id
 ORDER BY S.ID
 ```
+
+### 627. Swap Sex of Employees
+
+```sql
+update Salary
+set sex = if(sex = 'm' , 'f' , 'm')
+```
