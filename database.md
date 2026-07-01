@@ -273,7 +273,7 @@ order by reaction_ratio desc , user_id asc
 
 ### 1158. Market Analysis I
 
-```
+```sql
 select user_id as buyer_id , join_date , case when orders_in_2019 is null then 0 else orders_in_2019 end as orders_in_2019  from Users 
 left join (
 select buyer_id , count(*) as orders_in_2019 from Orders
@@ -340,4 +340,12 @@ ORDER BY S.ID
 ```sql
 update Salary
 set sex = if(sex = 'm' , 'f' , 'm')
+```
+
+### 1204. Last Person to Fit in the Bus
+
+```sql
+select person_name from Queue where turn = (select max(turn) from  (
+select * ,(select SUM(q1.weight) from Queue q1 where q1.turn <= Queue.turn) as sum_weight   from Queue 
+) t where t.sum_weight <= 1000)
 ```
