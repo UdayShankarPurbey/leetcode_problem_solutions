@@ -25,3 +25,11 @@ function singleNumber(nums: number[]): number {
     return newNum == undefined ? 0 : Number(newNum)
 };
 ```
+
+### 191. Number of 1 Bits
+
+```ts
+function hammingWeight(n: number): number {
+    return n.toString(2)?.replaceAll('0','')?.length
+};
+```
