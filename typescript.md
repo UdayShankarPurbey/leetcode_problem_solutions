@@ -15,3 +15,13 @@ function twoSum(nums: number[], target: number): number[] {
     }
 };
 ```
+
+### 136. Single Number
+
+```ts
+function singleNumber(nums: number[]): number {
+    let newNum : number | undefined ;
+    nums.forEach((x : number) => newNum =x^newNum)
+    return newNum == undefined ? 0 : Number(newNum)
+};
+```
