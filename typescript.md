@@ -67,3 +67,27 @@ function isValid(s: string): boolean {
     return bracketArray.length == 0 ? true : false;
 };
 ```
+
+### 202. Happy Number
+
+```ts
+function isHappy(n: number): boolean {
+    return numSquareSumAsNewNum(n , new Set<number>());
+};
+
+function numSquareSumAsNewNum(n : number , numberSet : Set<number>) : boolean{
+    const nvalue = n.toString()
+    let newValue = 0;
+    for(let val of nvalue) {
+        newValue += Number(val) * Number(val)
+    }
+        console.log(newValue , newValue === 1 ,numberSet)
+
+    if(numberSet.has(newValue)) return false;
+    if(newValue === 1) return true;
+
+    numberSet.add(newValue);
+
+    return numSquareSumAsNewNum(newValue , numberSet)
+}
+```
