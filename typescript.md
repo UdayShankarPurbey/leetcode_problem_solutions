@@ -91,3 +91,13 @@ function numSquareSumAsNewNum(n : number , numberSet : Set<number>) : boolean{
     return numSquareSumAsNewNum(newValue , numberSet)
 }
 ```
+
+### 190. Reverse Bits
+
+```ts
+function reverseBits(n: number): number {
+    const binaryBit = (n >>> 0).toString(2).padStart(32, '0');
+    const reveserBinaryBit = binaryBit.split('').reverse().join('');
+    return parseInt(reveserBinaryBit , 2) || 0;
+};
+```
