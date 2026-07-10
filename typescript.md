@@ -101,3 +101,19 @@ function reverseBits(n: number): number {
     return parseInt(reveserBinaryBit , 2) || 0;
 };
 ```
+
+### 217. Contains Duplicate
+
+```ts
+function containsDuplicate(nums: number[]): boolean {
+    const numMap = new Set();
+    for(let num of nums) {
+        if(!numMap.has(num)) {
+            numMap.add(num)
+        } else {
+            return true;
+        }
+    }
+    return false;
+};
+```
