@@ -411,3 +411,15 @@ group by product_id
 where Products.product_id = t1.product_id and Products.change_date = t1.max_change_date
 ) tf on tf.product_id = Products.product_id 
 ```
+
+### 
+
+```sql
+SELECT p.product_id, p.product_name
+FROM Product p
+JOIN Sales s
+ON p.product_id = s.product_id
+GROUP BY p.product_id, p.product_name
+HAVING MIN(s.sale_date) >= '2019-01-01'
+   AND MAX(s.sale_date) <= '2019-03-31';
+```
