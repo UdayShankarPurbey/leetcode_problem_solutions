@@ -412,7 +412,7 @@ where Products.product_id = t1.product_id and Products.change_date = t1.max_chan
 ) tf on tf.product_id = Products.product_id 
 ```
 
-### 
+### 1148. Article Views I
 
 ```sql
 SELECT p.product_id, p.product_name
