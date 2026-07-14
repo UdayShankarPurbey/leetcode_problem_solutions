@@ -133,3 +133,19 @@ function isPalindrome(x: number): boolean {
     return true
 };
 ```
+
+### 70. Climbing Stairs
+
+```ts
+function climbStairs(n: number): number {
+    const climbStairMap = new Map();
+    for(let i = 0 ; i<= n ; i++) {
+        if(i == 0 || i == 1){
+            climbStairMap.set(i,1)
+        } else {
+            climbStairMap.set(i , (climbStairMap.get((i- 2)) + climbStairMap.get((i- 1))))
+        }
+    }
+    return n >= 2?(climbStairMap.get((n- 2)) + climbStairMap.get((n- 1))) : 1
+};
+```
