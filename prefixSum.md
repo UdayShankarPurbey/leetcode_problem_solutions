@@ -40,3 +40,21 @@ function sumOddLengthSubarrays(arr: number[]): number {
     
 };
 ```
+
+### 1732. Find the Highest Altitude
+
+```ts
+function largestAltitude(gain: number[]): number {
+    let highestAltitude = 0;
+    let baseAltitude = 0;
+
+
+    for(let g of gain) {
+        baseAltitude += g
+        if(highestAltitude < baseAltitude) highestAltitude = baseAltitude
+    }
+
+    return highestAltitude
+    
+};
+```
