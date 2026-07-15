@@ -149,3 +149,20 @@ function climbStairs(n: number): number {
     return n >= 2?(climbStairMap.get((n- 2)) + climbStairMap.get((n- 1))) : 1
 };
 ```
+
+### 66. Plus One
+
+```ts
+function plusOne(digits: number[]): number[] {
+    let numberString = '';
+    const numberArray = [];
+    for(let num of digits) {
+        numberString += num
+    }
+    const number : string =( BigInt(numberString) + BigInt(1) ).toString();
+    for(let n of number) {
+        numberArray.push(Number(n))
+    }
+    return numberArray
+};
+```
