@@ -423,3 +423,16 @@ GROUP BY p.product_id, p.product_name
 HAVING MIN(s.sale_date) >= '2019-01-01'
    AND MAX(s.sale_date) <= '2019-03-31';
 ```
+
+### 1280. Students and Examinations
+
+```sql
+select Students.student_id, Students.student_name  ,Subjects.subject_name, COALESCE(t1.attended_exams,0)as attended_exams from Students 
+cross join Subjects 
+left join 
+(
+    select  student_id    ,subject_name , count(subject_name ) as attended_exams  from Examinations 
+group by student_id   ,Examinations.subject_name
+) t1 on t1.student_id =Students.student_id  and  t1.subject_name = Subjects.subject_name 
+order by student_id , subject_name  
+```
