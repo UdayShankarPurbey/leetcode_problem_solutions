@@ -166,3 +166,14 @@ function plusOne(digits: number[]): number[] {
     return numberArray
 };
 ```
+
+### 268. Missing Number
+
+```ts
+function missingNumber(nums: number[]): number {
+    const numSet = new Set(nums)
+    for(let i = 0; i<=nums.length ; i++) {
+        if(!numSet.has(i)) return i
+    }
+};
+```
