@@ -177,3 +177,47 @@ function missingNumber(nums: number[]): number {
     }
 };
 ```
+
+### 242. Valid Anagram
+
+```ts
+function isAnagram(s: string, t: string): boolean {
+    if(s.length !== t.length) return false ;
+    const sWithTheirLength = new Map();
+    const tWithTheirLength = new Map();
+
+    for (let i = 0; i<s.length; i++ ) {
+        const sLetter =  s[i] ;
+        const tLetter = t[i] ;
+
+        if(sWithTheirLength.has(sLetter)) {
+            sWithTheirLength.set(
+                sLetter , sWithTheirLength.get(sLetter) + 1
+            )
+            
+        } else {
+            sWithTheirLength.set(
+                sLetter , 1
+            )
+        }
+        
+
+         if(tWithTheirLength.has(tLetter)) {
+            tWithTheirLength.set(
+                tLetter , tWithTheirLength.get(tLetter) + 1
+            )
+            
+        } else {
+            tWithTheirLength.set(
+                tLetter , 1
+            )
+        }
+    } 
+
+    for (const s of sWithTheirLength.keys()) {
+        if(tWithTheirLength.get(s) !== sWithTheirLength.get(s)) return false
+    }
+
+    return true;
+};
+```
