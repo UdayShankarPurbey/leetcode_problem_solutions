@@ -436,3 +436,16 @@ group by student_id   ,Examinations.subject_name
 ) t1 on t1.student_id =Students.student_id  and  t1.subject_name = Subjects.subject_name 
 order by student_id , subject_name  
 ```
+
+### 1327. List the Products Ordered in a Period
+
+```sql
+select product_name , unit  from 
+(
+select product_id , sum(unit) as unit from Orders
+where month(order_date) = 2 and year (order_date) = 2020  
+group by product_id
+having sum(unit) >= 100
+) t1 
+left join Products on  t1.product_id = Products.product_id
+```
