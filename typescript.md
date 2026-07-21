@@ -258,3 +258,39 @@ function addValueInList(head: ListNode | null , data : number[] , dataLength : n
     return addValueInList(head.next , data ,(dataLength - 1) )
 }
 ```
+
+### 104. Maximum Depth of Binary Tree
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function maxDepth(root: TreeNode | null): number {
+    return getNextNodevalue(root , 0);
+};
+
+function getNextNodevalue(root: TreeNode | null ,maxDepth : number) : number  {
+    if(root === null ) return maxDepth;
+
+    maxDepth += 1;
+    
+    if(root.left === null &&  root.right === null) return maxDepth;
+
+    return Math.max(
+        getNextNodevalue(root.left , maxDepth),
+        getNextNodevalue(root.right , maxDepth)
+    );
+
+}
+```
