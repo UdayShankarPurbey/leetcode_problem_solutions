@@ -449,3 +449,10 @@ having sum(unit) >= 100
 ) t1 
 left join Products on  t1.product_id = Products.product_id
 ```
+
+### 1378. Replace Employee ID With The Unique Identifier
+
+```sql
+select unique_id , name  from Employees 
+left join EmployeeUNI on EmployeeUNI.id = Employees.id
+```
