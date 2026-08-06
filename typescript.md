@@ -68,3 +68,15 @@ function findMissingElements(nums: number[]): number[] {
     
 };
 ```
+
+### 
+
+```ts
+function lengthOfLastWord(s: string): number {
+    const words = s.replace(/\s+/g , " ").split(' ');
+    console.log(words);
+    const lastWord = words[words.length - 1] ? words[words.length - 1] : words[words.length - 2];
+    return lastWord.length;
+    
+};
+```
