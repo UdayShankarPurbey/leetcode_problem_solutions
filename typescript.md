@@ -69,7 +69,7 @@ function findMissingElements(nums: number[]): number[] {
 };
 ```
 
-### 
+### 58. Length of Last Word
 
 ```ts
 function lengthOfLastWord(s: string): number {
@@ -77,6 +77,23 @@ function lengthOfLastWord(s: string): number {
     console.log(words);
     const lastWord = words[words.length - 1] ? words[words.length - 1] : words[words.length - 2];
     return lastWord.length;
+    
+};
+```
+
+### 263. Ugly Number
+
+```ts
+function isUgly(n: number): boolean {
+    if(n <1) return false;
+    let num = n;
+    while(num >= 2) {
+        if(num%2 === 0) num /= 2;
+        else if(num%3 === 0) num /= 3;
+        else if(num%5 === 0) num /= 5;
+        else return false;
+    }
+    return true;
     
 };
 ```
