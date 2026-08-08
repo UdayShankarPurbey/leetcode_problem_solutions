@@ -97,3 +97,13 @@ function isUgly(n: number): boolean {
     
 };
 ```
+
+### 509. Fibonacci Number
+
+```ts
+function fib(n: number): number {
+    if(n===0) return 0;
+    if(n===1) return 1;
+    return fib(n -1) + fib(n-2);
+};
+```
