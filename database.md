@@ -464,3 +464,12 @@ select (event_day) as day , emp_id , ( sum (out_time) -sum(in_time) ) as total_t
 from Employees
 group by  (event_day)  , emp_id
 ```
+
+### 1693. Daily Leads and Partners
+
+```sql
+select date_id , make_name , count( distinct lead_id) as unique_leads ,
+count( distinct partner_id ) unique_partners
+from DailySales
+group by date_id , make_name
+```
