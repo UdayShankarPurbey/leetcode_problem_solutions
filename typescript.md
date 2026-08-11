@@ -125,3 +125,11 @@ function reverseString(s: string[]): void {
    }
 };
 ```
+
+### 3760. Maximum Substrings With Distinct Start
+
+```ts
+function maxDistinct(s: string): number {
+    return new Set(s.split('')).size
+};
+```
