@@ -41,6 +41,14 @@ function maxProduct(nums: number[]): number {
 };
 ```
 
+```ts
+function maxProduct(nums: number[]): number { 
+    if(nums.length<2) return 0;
+    nums.sort((a : number , b: number) => b - a);
+    return (nums[0] - 1) * (nums[1] -1);
+}
+```
+
 ### 3731. Find Missing Elements
 
 ```ts
