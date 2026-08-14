@@ -473,3 +473,10 @@ count( distinct partner_id ) unique_partners
 from DailySales
 group by date_id , make_name
 ```
+
+### 1683. Invalid Tweets
+
+```sql
+select tweet_id  from Tweets 
+where length(content) > 15
+```
