@@ -399,6 +399,20 @@ function twoSum(numbers: number[], target: number): number[] {
 };
 ```
 
+```ts
+function twoSum(numbers: number[], target: number): number[] {
+    const remainderMap = new Map();
+    for(let i = 0; i<numbers.length; i++) {
+        const num = numbers[i];
+        if(remainderMap.has(num)) return[remainderMap.get(num),i+1];
+
+        remainderMap.set((target - num) , i+1);
+    }
+
+    return [];
+}
+```
+
 ### 647. Palindromic Substrings
 
 ```ts
@@ -556,5 +570,65 @@ function topKFrequent(nums: number[], k: number): number[] {
         }
     }
     return [...numWithFrequency].sort((a : number[] , b : number[]) =>  b[1] - a[1]).slice(0,k).map((a : number[] ) => a[0])
+};
+```
+
+### 128. Longest Consecutive Sequence
+
+```ts
+function longestConsecutive(nums: number[]): number {
+     if (nums.length < 1) return 0;
+    if (nums.length === 1) return 1;
+
+    let maxLongestSequence = 1;
+    let currentSequence = 1;
+    nums.sort((a: number, b: number) => a - b);
+    let left = 0;
+    let right = 1;
+
+    while (left < right) {
+        if(nums[right] ===undefined) return maxLongestSequence;
+
+        if (nums[left] === nums[right]) { right++; continue }
+
+         if (nums[left] + 1 === nums[right]) {
+            currentSequence++;
+            left = right;
+            right = right + 1;
+        } else {
+            maxLongestSequence = maxLongestSequence<currentSequence ?currentSequence: maxLongestSequence;
+            currentSequence = 1;
+            left = right;
+            right = right + 1;
+        }
+
+        if(maxLongestSequence<currentSequence) {
+            maxLongestSequence = currentSequence;
+        }
+    }
+    return maxLongestSequence;
+};
+```
+
+### 238. Product of Array Except Self
+
+```ts
+function productExceptSelf(nums: number[]): number[] {
+
+    const productOfNumbers = nums.reduce((acc : number , curr : number ) => (acc*= curr) , 1);
+    return nums.map((num : number , index : number) => {
+        if(num == 0) {
+            const sum = nums.reduce((total, currentValue, currentIndex) => {
+                if (currentIndex === index) {
+                    return total; 
+                }
+
+                return total * currentValue;
+            }, 1);
+           
+            return sum;
+        }
+        return productOfNumbers/num
+    });  
 };
 ```

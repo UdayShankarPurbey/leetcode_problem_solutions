@@ -41,6 +41,14 @@ function maxProduct(nums: number[]): number {
 };
 ```
 
+```ts
+function maxProduct(nums: number[]): number { 
+    if(nums.length<2) return 0;
+    nums.sort((a : number , b: number) => b - a);
+    return (nums[0] - 1) * (nums[1] -1);
+}
+```
+
 ### 3731. Find Missing Elements
 
 ```ts
@@ -105,5 +113,31 @@ function fib(n: number): number {
     if(n===0) return 0;
     if(n===1) return 1;
     return fib(n -1) + fib(n-2);
+};
+```
+
+### 344. Reverse String
+
+```ts
+function reverseString(s: string[]): void {
+    if(s.length < 1) return ;
+    let left = 0 ; 
+    let right = s.length -1;
+    
+   while(left < right) {
+        const val =  s[left];
+        s[left] = s[right];
+        s[right] = val
+        left++;
+        right --;
+   }
+};
+```
+
+### 3760. Maximum Substrings With Distinct Start
+
+```ts
+function maxDistinct(s: string): number {
+    return new Set(s.split('')).size
 };
 ```

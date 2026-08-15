@@ -480,4 +480,9 @@ group by date_id , make_name
 select user_id , count(follower_id) as followers_count from Followers 
 group by user_id 
 order by user_id;
+### 1683. Invalid Tweets
+
+```sql
+select tweet_id  from Tweets 
+where length(content) > 15
 ```
