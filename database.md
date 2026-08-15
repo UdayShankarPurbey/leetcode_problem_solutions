@@ -473,3 +473,11 @@ count( distinct partner_id ) unique_partners
 from DailySales
 group by date_id , make_name
 ```
+
+### 1729. Find Followers Count
+
+```sql 
+select user_id , count(follower_id) as followers_count from Followers 
+group by user_id 
+order by user_id;
+```
