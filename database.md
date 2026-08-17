@@ -496,3 +496,20 @@ select  user_id  , max(time_stamp ) as last_stamp from Logins
 where year(time_stamp) = 2020
 group by user_id 
 ```
+
+### 1965. Employees With Missing Information
+
+```sql
+(SELECT E.employee_id
+FROM Employees E
+LEFT JOIN Salaries S on E.employee_id = S.employee_id
+WHERE S.salary IS NULL
+
+UNION
+
+SELECT S.employee_id
+FROM Employees E
+RIGHT JOIN Salaries S on E.employee_id = S.employee_id
+WHERE E.name IS NULL)
+ORDER BY employee_id
+```
