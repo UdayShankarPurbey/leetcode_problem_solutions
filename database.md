@@ -513,3 +513,14 @@ RIGHT JOIN Salaries S on E.employee_id = S.employee_id
 WHERE E.name IS NULL)
 ORDER BY employee_id
 ```
+
+### 1407. Top Travellers
+
+```sql
+select name , COALESCE(travelled_distance , 0) as travelled_distance from  Users
+left join 
+(select user_id , sum(distance)  as travelled_distance  from Rides 
+group by user_id 
+) t on Users.id = t.user_id
+order by travelled_distance  desc , name
+```
