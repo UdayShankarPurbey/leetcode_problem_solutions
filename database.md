@@ -524,3 +524,10 @@ group by user_id
 ) t on Users.id = t.user_id
 order by travelled_distance  desc , name
 ```
+
+### 2356. Number of Unique Subjects Taught by Each Teacher
+
+```sql
+select teacher_id , count(distinct subject_id) as cnt from Teacher 
+group by teacher_id 
+```
