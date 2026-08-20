@@ -141,3 +141,31 @@ function maxDistinct(s: string): number {
     return new Set(s.split('')).size
 };
 ```
+
+### 3069. Distribute Elements Into Two Arrays I
+
+```ts
+function resultArray(nums: number[]): number[] {
+    const arr1 = [];
+    const arr2 = [];
+    for(let i = 0; i<nums.length; i++) {
+        const num = nums[i];
+        let arr1LastNum = arr1[arr1.length - 1]
+        let arr2LastNum = arr2[arr2.length - 1]
+        if(arr1LastNum === undefined) {
+            arr1.push(num);
+            continue;
+        }
+
+        if(arr2LastNum === undefined) {
+            arr2.push(num);
+            continue;
+        }
+
+        if(arr1LastNum > arr2LastNum) arr1.push(num);
+        else arr2.push(num);
+    }
+
+    return [...arr1 , ...arr2]
+};
+```
