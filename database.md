@@ -544,3 +544,22 @@ UNION
 SELECT p3.product_id, 'store3' as store, p3.store3 AS price FROM products as p3
 WHERE p3.store3 IS NOT NULL
 ```
+
+### 1789. Primary Department for Each Employee
+
+```sql
+SELECT employee_id, department_id
+FROM Employee
+WHERE primary_flag = 'Y'
+
+UNION
+
+SELECT employee_id, department_id
+FROM Employee
+WHERE employee_id IN (
+    SELECT employee_id
+    FROM Employee
+    GROUP BY employee_id
+    HAVING COUNT(*) = 1
+);
+```
