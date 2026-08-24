@@ -564,6 +564,8 @@ WHERE employee_id IN (
 );
 ```
 
+### 1661. Average Time of Process per Machine
+
 ```sql
 SELECT
     s.machine_id,
@@ -575,4 +577,10 @@ SELECT
                     AND s.activity_type = 'start'
                         AND e.activity_type = 'end'
                         GROUP BY s.machine_id;
+```
+
+### 610. Triangle Judgement
+
+```sql
+select * ,case when x+y > z and x+z > y and z+y > x then 'Yes' else 'No' end triangle   from Triangle
 ```
