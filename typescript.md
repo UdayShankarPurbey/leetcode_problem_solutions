@@ -169,3 +169,16 @@ function resultArray(nums: number[]): number[] {
     return [...arr1 , ...arr2]
 };
 ```
+
+### 3718. Smallest Missing Multiple of K
+
+```ts
+function missingMultiple(nums: number[], k: number): number {
+    const number = new Set(nums);
+    for(let i= 1 ; i<=nums.length;i++) {
+        const reqNum = k*i;
+        if(!number.has(reqNum)) return reqNum;
+    }
+    return k * (nums.length + 1)
+};
+```
