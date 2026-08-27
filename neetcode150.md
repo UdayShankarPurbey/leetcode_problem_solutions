@@ -632,3 +632,43 @@ function productExceptSelf(nums: number[]): number[] {
     });  
 };
 ```
+
+### 48. Rotate Image
+
+## solution 1 
+
+```ts
+function rotate(matrix: number[][]): void {
+    const rotatedMatrix = [];
+
+    for (let i = 0; i < matrix.length; i++) {
+        const row = [];
+        for (let j = 0; j < matrix.length; j++) {
+            row.push(matrix[j][i])
+        }
+        rotatedMatrix.push(row.reverse())
+    }
+
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix.length; j++) {
+            matrix[i][j] = rotatedMatrix[i][j]
+        }
+    }
+};
+```
+
+## solution 2 
+
+```ts
+function rotate(matrix: number[][]): void {
+    const len = matrix.length;
+    matrix.forEach((row : number[]) => row.reverse());
+    for(let i = 0; i < len ;i++) {
+        for(let j= 0; j < len - i ; j++) {
+            const temp = matrix[i][j];
+            matrix[i][j] = matrix[len - 1 - j][len- 1 - i];
+            matrix[len - 1 - j][len- 1 - i] = temp;
+        }
+    }
+}
+```

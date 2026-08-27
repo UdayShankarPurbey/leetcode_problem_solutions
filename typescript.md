@@ -191,3 +191,27 @@ function addDigits(num: number): number {
     return addDigits(num.toString().split('').reduce((a,b) => Number(a)+Number(b) , 0))
 };
 ```
+
+
+
+### 48. Rotate Image
+
+```ts
+function rotate(matrix: number[][]): void {
+    const rotatedMatrix = [];
+
+    for (let i = 0; i < matrix.length; i++) {
+        const row = [];
+        for (let j = 0; j < matrix.length; j++) {
+            row.push(matrix[j][i])
+        }
+        rotatedMatrix.push(row.reverse())
+    }
+
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix.length; j++) {
+            matrix[i][j] = rotatedMatrix[i][j]
+        }
+    }
+};
+```
