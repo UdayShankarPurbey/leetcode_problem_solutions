@@ -215,3 +215,29 @@ function rotate(matrix: number[][]): void {
     }
 };
 ```
+
+### 383. Ransom Note
+
+```ts
+function canConstruct(ransomNote: string, magazine: string): boolean {
+    const magazineCharCount = new Map();
+
+    for(let i = 0 ; i< magazine.length; i++) {
+        if(magazineCharCount.has(magazine[i])) {
+            magazineCharCount.set(magazine[i] , magazineCharCount.get(magazine[i]) + 1);
+        } else {
+            magazineCharCount.set(magazine[i] , 1)
+        }
+    }
+
+    for(let i = 0 ; i< ransomNote.length; i++) {
+        if(magazineCharCount.has(ransomNote[i]) && magazineCharCount.get(ransomNote[i]) > 0 ) {
+            magazineCharCount.set(ransomNote[i] , magazineCharCount.get(ransomNote[i]) - 1);
+        }else {
+            return false;
+        }
+
+    }
+    return true;
+};
+```
