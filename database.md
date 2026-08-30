@@ -584,3 +584,9 @@ SELECT
 ```sql
 select * ,case when x+y > z and x+z > y and z+y > x then 'Yes' else 'No' end triangle   from Triangle
 ```
+
+### 1757. Recyclable and Low Fat Products
+
+```sql 
+select product_id  from Products where low_fats = 'Y' and recyclable = 'Y'
+```
