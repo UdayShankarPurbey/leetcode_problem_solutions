@@ -258,3 +258,16 @@ function removeElement(nums: number[], val: number): number {
     return k;
 }
 ```
+
+### 3895. Count Digit Appearances
+
+```ts
+function countDigitOccurrences(nums: number[], digit: number): number {
+    let digitCount = 0;
+    const digitStr = digit.toString();
+    for(let char of nums.join('')) {
+        if(char === digitStr) digitCount++;
+    }
+    return digitCount;
+};
+```
