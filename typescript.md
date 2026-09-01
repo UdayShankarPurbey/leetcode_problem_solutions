@@ -271,3 +271,20 @@ function countDigitOccurrences(nums: number[], digit: number): number {
     return digitCount;
 };
 ```
+
+### 26. Remove Duplicates from Sorted Array
+
+```ts
+function removeDuplicates(nums: number[]): number {
+    let filledIndex = 1;
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] !== nums[filledIndex - 1]) {
+            nums[filledIndex] = nums[i];
+            filledIndex++;
+        }
+    }
+
+    return filledIndex;
+}
+```
