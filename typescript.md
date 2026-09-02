@@ -303,3 +303,37 @@ function largestNumber(nums: number[]): string {
 
 };
 ```
+
+### 3875. Construct Uniform Parity Array I
+
+```ts
+function uniformArray(nums1: number[]): boolean {
+    const num2Even = [];
+    const num2Odd = [];
+    for (let i = 0; i < nums1.length; i++) {
+        const num = nums1[i];
+        if (num % 2 === 0) {
+            num2Even.push(num);
+            for (let j = 0; j < nums1.length; j++) {
+
+                if (i === j) continue;
+
+                if ((num - nums1[j]) % 2 !== 0) {
+                    num2Odd.push(num - nums1[j])
+                    break;
+                };
+            }
+
+        }
+        else {
+            num2Odd.push(num);
+            for (let j = 0; j < nums1.length; j++) {
+                if (i === j) continue;
+                if ((num - nums1[j]) % 2 === 0) { num2Even.push(num - nums1[j]); break }
+            }
+        }
+    }
+    return nums1.length === num2Even.length || nums1.length === num2Odd.length ? true : false
+
+};
+```
