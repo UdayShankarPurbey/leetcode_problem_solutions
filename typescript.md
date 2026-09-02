@@ -288,3 +288,18 @@ function removeDuplicates(nums: number[]): number {
     return filledIndex;
 }
 ```
+
+### 179. Largest Number
+
+```ts
+function largestNumber(nums: number[]): string {
+    const largestValue = nums.sort((a, b) => {
+        const ab = a.toString() + b.toString();
+        const ba = b.toString() + a.toString();
+
+        return ba.localeCompare(ab);
+    }).join('');
+    return largestValue[0] !== '0' ? largestValue : '0'
+
+};
+```
