@@ -364,3 +364,19 @@ function romanToInt(s: string): number {
     return num;
 };
 ```
+
+### 3903. Smallest Stable Index I
+
+```ts
+function firstStableIndex(nums: number[], k: number): number {
+    let max = -Infinity;
+
+    for(let i = 0 ; i< nums.length ; i++) {
+        if(nums[i] > max) max = nums[i];
+        let min = Math.min(...nums.slice(i))
+
+        if((max - min) <= k) return i;
+    }
+    return -1;
+};
+```
